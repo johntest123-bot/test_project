@@ -11,15 +11,15 @@
 |
 */
 
-Route::get('/', 'ProductsController@index')->name('products');
-Route::get('/products/{slug}', 'ProductsController@show')->name('products_show');
-Route::get('/product/{slug}', 'ProductsController@showCategories')->name('categories');
-Route::get('/search_autohome', 'ProductsController@searchAutoHome');
-Route::get('/products', 'ProductsController@search')->name('products_search');
-Route::get('/carts', 'CartsController@cart')->name('carts');
-Route::get('/cart_products', 'CartsController@cartProducts')->name('carts_products');
-Route::post('/buy_products', 'CartsController@buyProducts')->name('buys_products');
-Route::get('/subject', 'ProductsController@productByType')->name('product_by_type');
+Route::get('/', 'PostsController@index')->name('posts');
+// Route::get('/products/{slug}', 'ProductsController@show')->name('products_show');
+// Route::get('/product/{slug}', 'ProductsController@showCategories')->name('categories');
+// Route::get('/search_autohome', 'ProductsController@searchAutoHome');
+// Route::get('/products', 'ProductsController@search')->name('products_search');
+// Route::get('/carts', 'CartsController@cart')->name('carts');
+// Route::get('/cart_products', 'CartsController@cartProducts')->name('carts_products');
+// Route::post('/buy_products', 'CartsController@buyProducts')->name('buys_products');
+// Route::get('/subject', 'ProductsController@productByType')->name('product_by_type');
 
 Route::get('/services', function () {
     return view('services.index');
@@ -60,7 +60,7 @@ Route::resource('comments', 'CommentController')->only(['store']);
 Route::post('comments/reply', 'CommentController@reply')->name('comments.reply');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'admin', 'middleware' => 'admin'], function () {
-    Route::get('/', 'ProductsController@index');
+    Route::get('/', 'UsersController@index');
     Route::resource('products', 'ProductsController');
     Route::post('/mass_import', 'ProductsController@import')->name('products.import');
     Route::get('/example_excel', 'ProductsController@download_excel')->name('products.download.example');

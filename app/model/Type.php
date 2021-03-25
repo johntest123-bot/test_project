@@ -5,7 +5,7 @@ namespace App\model;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
-use App\model\Category;
+use App\model\Post;
 
 class Type extends Model
 {
@@ -32,12 +32,12 @@ class Type extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'name', 'desc', 'slug', 'status'
+        'id', 'name', 'desc', 'slug'
     ];
 
-    public function categories()
+    public function posts()
     {
-        return $this->hasMany(Category::class);
+        return $this->hasMany(Post::class);
     }
 
     public function scopeShowable($query)

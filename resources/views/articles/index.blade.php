@@ -1,4 +1,5 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.app') 
+@section('content')
 <div class="container-crumb">
     <div class="texttitle sitemaps">
         <a href="/">Trang Chủ</a>

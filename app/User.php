@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\model\Product;
+use App\model\Posts;
 
 class User extends Authenticatable
 {
@@ -18,8 +18,8 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name', 'email', 'password',
-        'phone_number', 'address', 'company_name',
-        'tax_code', 'company_address'
+        'phone_number', 'address', 'website',
+        'icq', 'telegram'
     ];
 
     /**
@@ -40,9 +40,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function favorites()
+    public function posts()
     {
-        return $this->belongsToMany(Product::class, 'favorites');
+        return $this->belongsToMany(Post::class, 'posts');
     }
     
     public function scopeCustomer($query)

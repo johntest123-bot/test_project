@@ -5,12 +5,13 @@ namespace App\model;
 use Illuminate\Database\Eloquent\Model;
 use App\model\Reply;
 use App\User;
+use App\Post;
 
 class Comment extends Model
 {
-    public function commentable()
+    public function post()
     {
-        return $this->morphTo();
+        return $this->belongsTo(Post::class);
     }
 
     public function replies()

@@ -26,4 +26,7 @@
 #field {
     /* margin-bottom: 20px; */
 }
-.image_file { display: none; }
+
+.image_file {
+    display: none;
+}
