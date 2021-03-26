@@ -4,8 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\model\Article;
-use App\model\ArticleCategory;
+use App\model\Post;
+use App\model\Type;
 
 class ArticlesController extends Controller
 {
@@ -16,7 +16,7 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        $articles = Article::with('article_category')->paginate(30);
+        $articles = Post::with('article_category')->paginate(30);
         return view('admin.articles.index', compact('articles'));
     }
 
@@ -27,7 +27,7 @@ class ArticlesController extends Controller
      */
     public function create()
     {
-        $categories = ArticleCategory::all();
+        $categories = Type::all();
         return view('admin.articles.create', compact('categories'));
     }
 
@@ -42,25 +42,14 @@ class ArticlesController extends Controller
         $request->validate([
             'title'               =>  'required',
             'content'             =>  'required',
-            'status'              =>  'required',
-            'article_category_id' =>  'required',
-            'thumbnail'           =>  'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'type_id' =>  'required'
         ]);
 
-        $thumbnail = $request->file('thumbnail');
-
-        $new_name = time().'.'.$thumbnail->getClientOriginalExtension();
-        $thumbnail->move(public_path('images'), $new_name);
         $article = array(
             'title'               =>   $request->title,
             'content'             =>   $request->content,
             'slug'                =>   $request->slug,
-            'status'              =>   $request->status,
-            'article_category_id' =>   $request->article_category_id,
-            'thumbnail'           =>   $new_name,
-            'meta_title'          =>   $request->meta_title,
-            'meta_keywords'       =>   $request->meta_keywords,
-            'meta_description'    =>   $request->meta_description
+            'type_id' =>   $request->type_id
         );
 
         Article::create($article);
@@ -76,8 +65,8 @@ class ArticlesController extends Controller
      */
     public function edit($id)
     {
-        $categories = ArticleCategory::all();
-        $article = Article::findOrFail($id);
+        $categories = Type::all();
+        $article = Post::findOrFail($id);
         return view('admin.articles.edit', compact('article', 'categories'));
     }
 
@@ -90,46 +79,21 @@ class ArticlesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $image_name = $request->hidden_image;
-        $image = $request->file('thumbnail');
-        if($image)
-        {
-            $request->validate([
-                'title'               =>  'required',
-                'content'             =>  'required',
-                'status'              =>  'required',
-                'slug'                =>  'required|unique:articles',
-                'article_category_id' =>  'required',
-                'thumbnail'           =>  'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            ]);
-
-            $image_name = time().'.'.$image->getClientOriginalExtension();
-            $image->move(public_path('images'), $image_name);
-        }
-        else
-        {
-            $request->validate([
-                'title'               =>  'required',
-                'content'             =>  'required',
-                'status'              =>  'required',
-                'slug'                =>  'required',
-                'article_category_id' =>  'required'
-            ]);
-        }
+       
+        $request->validate([
+            'title'               =>  'required',
+            'content'             =>  'required',
+            'type_id' =>  'required'
+        ]);
 
         $form_data = array(
             'title'               =>   $request->title,
             'content'             =>   $request->content,
             'slug'                =>   $request->slug,
-            'status'              =>   $request->status,
-            'article_category_id' =>   $request->article_category_id,
-            'thumbnail'           =>   $image_name,
-            'meta_title'          =>   $request->meta_title,
-            'meta_keywords'       =>   $request->meta_keywords,
-            'meta_description'    =>   $request->meta_description 
+            'type_id' =>   $request->type_id
         );
 
-        Article::whereId($id)->update($form_data);
+        Post::whereId($id)->update($form_data);
 
         return redirect()->route('admin.articles.index')->with('success', 'Data Updated successfully.');
     }
@@ -142,7 +106,7 @@ class ArticlesController extends Controller
      */
     public function destroy($id)
     {
-        $data = Article::findOrFail($id);
+        $data = Post::findOrFail($id);
         $data->delete();
         return redirect()->route('admin.articles.index')->with('success', 'Data is successfully deleted');
     }

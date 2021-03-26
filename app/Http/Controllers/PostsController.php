@@ -15,12 +15,12 @@ class PostsController extends Controller
      */
     public function index(Request $request)
     {   
-        // if ($request->has('q')) {
-        //     $query = $request->query('q');
-        //     $articles = Article::active()->where('title', 'like', '%' . $query . '%')->get();
-        //     return view('articles.search_result', compact('articles', 'query'));
-        // }
-        // $categories = ArticleCategory::active()->with('articles')->get();
+        if ($request->has('q')) {
+            $query = $request->query('q');
+            $articles = Article::active()->where('title', 'like', '%' . $query . '%')->get();
+            return view('articles.search_result', compact('articles', 'query'));
+        }
+        $categories = ArticleCategory::active()->with('articles')->get();
         $posts = Post::all();
         return view('posts.index', compact('posts'));
     }

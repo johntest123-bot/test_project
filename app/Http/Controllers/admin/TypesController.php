@@ -39,15 +39,12 @@ class TypesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'    =>  'required',
-            'desc'     =>  'required'
+            'name'    =>  'required'
         ]);
 
         $type = array(
             'name'       =>   $request->name,
-            'desc'       =>   $request->desc,
             'slug'       =>   $request->slug,
-            'status'     =>   1
         );
 
         $check = Type::create($type);
@@ -85,14 +82,11 @@ class TypesController extends Controller
     {
         $request->validate([
             'name'    =>  'required',
-            'desc'    =>  'required'
         ]);
 
         $form_data = array(
             'name'       =>   $request->name,
-            'desc'       =>   $request->desc,
             'slug'       =>   $request->slug,
-            'status'     =>   $request->status
         );
 
         $check = Type::whereId($id)->update($form_data);
