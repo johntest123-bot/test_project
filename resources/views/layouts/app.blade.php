@@ -8,8 +8,6 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>
-  </title>
   <link rel="shortcut icon" href="{{ url('logo/logo.ico') }}" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,7 +17,7 @@
   <!-- Fonts -->
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+  @yield('title')
   <!-- Styles -->
   <link href="{{ url('css/style.css') }}" rel="stylesheet">
   <link href="{{ url('css/style3ba1.css') }}" rel="stylesheet">
@@ -42,5 +40,6 @@
       </div>
       @include('footer')
   </div>
+  @yield('js')
 </body>
 </html>

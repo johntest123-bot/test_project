@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/', 'PostsController@index')->name('posts');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/{slug}', 'HomeController@show')->name('show');
 // Route::get('/products/{slug}', 'ProductsController@show')->name('products_show');
 // Route::get('/product/{slug}', 'ProductsController@showCategories')->name('categories');
 // Route::get('/search_autohome', 'ProductsController@searchAutoHome');
@@ -38,7 +39,7 @@ Route::get('pages/quy-dinh-bao-hanh', function () {
 });
 
 Auth::routes();
-
+Route::post('/create/comments', 'PostsController@store')->name('post.create');
 Route::get('/mypage', 'UserController@mypage');
 Route::post('/update_info', 'UserController@update');
 Route::get('/favorites', 'FavoriteController@lists');

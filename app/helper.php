@@ -1,43 +1,25 @@
 <?php
     use App\model\Type;
-    use App\model\Category;
-    use App\model\ArticleCategory;
-    use App\model\Service;
+    use App\User;
     use App\model\Reply;
     use App\model\Comment;
-    use App\model\Information;
-    use App\model\InformationCategory;
-    use App\model\Banner;
-    use App\model\BannerItem;
-    use App\model\OnlineSupportInformation;
-    use App\model\Setting;
-    use App\Enums\BannerType;
-    use App\Enums\SettingType;
-    use App\model\Product;
     use Illuminate\Support\Facades\URL;
 
-    function getCategories() {
-        return Category::all();
-    }
-
-    function getArticleCategories() {
-        return ArticleCategory::active()->get();
-    }
-
-    function getProductLimit($ids) {
-        return Product::whereIn('category_id', $ids)->get();
-    }
-
-    function getSuggestServices() {
-        return Service::active()->orderBy('id', 'DESC')->take(5)->get();
-    }
-
-    function getSuggestInformations() {
-        return Information::active()->orderBy('id', 'DESC')->take(5)->get();
-    }
 
     function getInformations($types) {
         return Information::active()->where('information_category_id', $types)->orderBy('id', 'DESC')->take(6)->get();
+    }
+
+    function infoContact() {
+        return User::where('is_admin', 1)->first();
+    }
+
+    function listMenu() {
+        return Type::all();
+    }
+
+    function commentLastest() {
+        return Comment::with('user')->orderBy('id', 'DESC')->take(6)->get();
     }
 
     function getInformationCategory($id) {
@@ -124,9 +106,6 @@
         return Setting::with('onlineSupportInformations')->whereIn('type', onlineSupportSettingTypes())->get();
     }
 
-    function onlineSupportSettingTypes() {
-        return [SettingType::OnlineSupportBusiness, SettingType::OnlineSupportTechnical, SettingType::OnlineSupportSaleWarranty];
-    }
 
     function getProductImageUrl($id) {
         $product = Product::findOrFail($id);
@@ -149,18 +128,4 @@
         return $result;
      }
 
-     function unit_product($str) {
-        if ($str) {
-            return $str;
-        } else {
-            return 'Cái';
-        }
-     }
-
-     function total_money_of_products($products) {
-         $total = 0;
-         foreach($products as $item) {
-            $total += ($item->pivot->quantity)*($item->pivot->price);
-         }
-         return number_format($total);
-     }
+ 

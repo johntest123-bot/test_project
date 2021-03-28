@@ -16,7 +16,7 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        $articles = Post::with('article_category')->paginate(30);
+        $articles = Post::with('type')->paginate(30);
         return view('admin.articles.index', compact('articles'));
     }
 
@@ -52,7 +52,7 @@ class ArticlesController extends Controller
             'type_id' =>   $request->type_id
         );
 
-        Article::create($article);
+        Post::create($article);
 
         return redirect()->route('admin.articles.index')->with('success', 'Data Added successfully.');
     }

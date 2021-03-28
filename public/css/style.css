@@ -43,6 +43,32 @@
     background-color: #FFFFFF;
 }
 
+.post {
+    background-color: #FFFFFF;
+    font-size: 14px;
+    border: 1px solid #555;
+    box-shadow: 0 0 2px #333;
+    margin: 0 0 10px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.comment-respond {
+    display: none;
+}
+
+.post-list {
+    border-top: 6px solid #222222;
+}
+
+.entry-title {
+    margin-bottom: 15px;
+}
+
+.entry-title a:hover {
+    color: #0E4D7A;
+}
+
 #nav-main {
     background-color: #222222;
 }

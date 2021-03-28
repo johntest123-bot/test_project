@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 @section('title', 'Dashboard')
 @section('content_header')
-<h1>Phân loại danh mục</h1>
+<h1>Danh mục menu</h1>
 @stop
 @section('content')
 <div class="card">

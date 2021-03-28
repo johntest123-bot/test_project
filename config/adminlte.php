@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => 'bepmesushi.com',
+    'logo' => 'trustedcvv',
     'logo_img' => '/logo/logo.ico',
     'logo_img_class' => 'brand-image-xl',
     'logo_img_xl' => null,
@@ -246,14 +246,13 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text'    => 'Loai bài viết',
+            'text'    => 'Danh mục menu',
             'url'  => '/admin/types',
             'icon'    => 'fas fa-list-alt',
         ],
         [
-
-            'text'    => 'Danh mục',
-            'url'  => '/admin/categories',
+            'text'    => 'Bài viết',
+            'url'  => '/admin/articles',
             'icon'    => 'fas fa-th-list',
         ],
         [

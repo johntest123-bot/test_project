@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('telegram')->nullable();
             $table->string('address')->nullable();
             $table->bigInteger('phone_number')->nullable();
-            $table->integer('website')->nullable();
+            $table->string('website')->nullable();
             $table->string('note')->nullable();
             $table->timestamps();
         });

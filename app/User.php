@@ -47,11 +47,11 @@ class User extends Authenticatable
     
     public function scopeCustomer($query)
     {
-        return $query->where('is_admin', 0)->where('status', 1);
+        return $query->where('is_admin', 0);
     }
 
     public function scopeAdmins($query)
     {
-        return $query->where('is_admin', 1)->where('status', 1);
+        return $query->where('is_admin', 1);
     }
 }

@@ -15,6 +15,7 @@ class UsersController extends Controller
         $q = $request->has('q') ? $request->q : "";
         $users = User::where("name", 'LIKE','%'.$q.'%')->
         orWhere("email", 'LIKE','%'.$q.'%')->
+        where('is_admin', 0)->
         orderBy('id', 'desc')->paginate(30);
         return view('admin.users.index', compact('users'));
     }
@@ -50,7 +51,12 @@ class UsersController extends Controller
             'is_admin' => 'required'
         ]);
         $form_data = array(
-            'is_admin' => $request->is_admin
+            'is_admin' => $request->is_admin,
+            'email' => $request->email,
+            'name'  => $request->name,
+            'website' => $request->website,
+            'icq' => $request->icq,
+            'telegram' => $request->telegram
         );
         User::whereId($id)->update($form_data);
 

@@ -42,6 +42,11 @@ class Post extends Model
         return $this->belongsTo(Type::class);
     }
 
+    public function type()
+    {
+        return $this->belongsTo(Type::class);
+    }
+
     public function comments()
     {
         return $this->hasMany(Comment::class);
@@ -53,6 +58,6 @@ class Post extends Model
     }
 
     protected $fillable = [
-        'id', 'title', 'content', 'slug', 'thumbnail'
+        'id', 'type_id', 'title', 'content', 'slug', 'thumbnail'
     ];
 }

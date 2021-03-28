@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 @section('title', 'Dashboard')
 @section('content_header')
-<h1>Tạo tin tức</h1>
+<h1>Tạo bài viết</h1>
 @stop
 @section('content')
 @if($errors->any())
@@ -22,7 +22,7 @@
         <form method="post" action="{{ route('admin.articles.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group row">
-                <label class="col-sm-2 col-form-label require">Tiêu €ề</label>
+                <label class="col-sm-2 col-form-label require">Tiêu đề</label>
                 <div class="col-sm-10">
                     <input type="text" name="title" class="form-control" value="{{ old('title') }}" />
                 </div>

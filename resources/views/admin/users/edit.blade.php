@@ -32,49 +32,31 @@
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Tên</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control" disabled>{{ $user->name }}</textarea>
+                    <input type="text" class="form-control" name="name" value="{{ $user->name }}">
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Email</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control" disabled>{{ $user->email }}</textarea>
+                    <input type="text" class="form-control" name="email" value="{{ $user->email }}">
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Ảnh</label>
+                <label class="col-sm-2 col-form-label">Website</label>
                 <div class="col-sm-10">
-                    <img src="{{ URL::to('/') }}/images/{{ $user->avatar }}" class="img-thumbnail" width="100" />
+                    <input type="text" name="website" class="form-control" value="{{ $user->website }}" />
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-sm-2 col-form-label">€ịa chỉ</label>
+                <label class="col-sm-2 col-form-label">Icq</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" value="{{ $user->address }}" disabled />
+                    <input type="text"  name="icq" class="form-control" value="{{ $user->icq }}" />
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-sm-2 col-form-label">S€T</label>
+                <label class="col-sm-2 col-form-label">Telegram</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" value="{{ $user->phone_number }}" disabled />
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Tên công ty</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" value="{{ $user->company_name }}" disabled />
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label">€ịa chỉ công ty</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" value="{{ $user->company_address }}" disabled />
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Mã số thuế</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" value="{{ $user->tax_code }}" disabled />
+                    <input type="text" name="telegram" class="form-control" value="{{ $user->telegram }}" />
                 </div>
             </div>
             <div class="form-group row">

@@ -44,6 +44,7 @@ class TypesController extends Controller
 
         $type = array(
             'name'       =>   $request->name,
+            'desc'       =>   $request->desc,
             'slug'       =>   $request->slug,
         );
 
@@ -86,6 +87,7 @@ class TypesController extends Controller
 
         $form_data = array(
             'name'       =>   $request->name,
+            'desc'       =>   $request->desc,
             'slug'       =>   $request->slug,
         );
 

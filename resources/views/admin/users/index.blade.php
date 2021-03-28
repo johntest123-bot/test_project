@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 @section('title', 'Dashboard')
 @section('content_header')
-<h1>Danh sách dịch vụ</h1>
+<h1>Danh sách khách hàng</h1>
 <br>
 @stop
 @section('content')
@@ -14,10 +14,9 @@
                     <td>ID</td>
                     <td>Tên</td>
                     <td>Email</td>
-                    <td>€ịa chỉ</td>
-                    <td>S€T</td>
-                    <td>Công ty</td>
-                    <td>Mã số thuế</td>
+                    <td>Website</td>
+                    <td>Icq</td>
+                    <td>Telegram</td>
                 </tr>
             </thead>
             <tbody>
@@ -26,10 +25,9 @@
                     <td><a href="{{ route('admin.users.edit', $user->id) }}">{{ $user->id }}</a></td>
                     <td>{{ $user->name }}</td>
                     <td><a href="{{ route('admin.users.edit', $user->id) }}">{{ $user->email }}</a></td>
-                    <td>{{ $user->address }}</td>
-                    <td>{{ $user->phone_number }}</td>
-                    <td>{{ $user->company_name }}</td>
-                    <td>{{ $user->tax_code }}</td>
+                    <td>{{ $user->website }}</td>
+                    <td>{{ $user->icq }}</td>
+                    <td>{{ $user->telegram }}</td>
                     <td>
                         <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-primary">Edit</a>
                     </td>
