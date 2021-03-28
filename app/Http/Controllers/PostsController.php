@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\model\Post;
 use App\model\Comment;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class PostsController extends Controller
 {
@@ -49,34 +50,32 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+        dd();
         $request->validate([
             'content'             =>  'required',
             'author'             =>  'required',
             'email'              => 'required'
         ]);
-        
+        $user = User::where('email', $request->email)->firstOrFail();
+        // if(!$user) {
+           
+        // }
+
         $user = User::create([
             'name' => $request->author,
             'email' => $request->email,
             'password' => Hash::make('1357abcd'),
             'website' => $request->website,
         ]);
-
-        $post = array(
+       
+        $comment = array(
             'content'               =>   $request->content,
             'post_id'             =>   $request->post_id,
             'user_id'               => $user->id
         );
 
-        Post::create($post);
+        Comment::create($comment);
 
-        return redirect()->route('post.create')->with('success', 'Data Added successfully.');
-    }
-
-    public function category_details($id)
-    {
-        // $category = ArticleCategory::active()->whereSlug($id)->firstOrFail();
-        // $articles = Article::active()->where('article_category_id', $category->id)->paginate(10);
-        // return view('articles.category_details', compact('category', 'articles'));
+        return redirect()->back();
     }
 }

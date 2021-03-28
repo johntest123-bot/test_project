@@ -17,4 +17,8 @@ class Reply extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    protected $fillable = [
+        'id', 'user_id', 'post_id', 'content', 'created_at'
+    ];
 }

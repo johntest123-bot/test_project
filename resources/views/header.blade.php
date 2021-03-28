@@ -6,7 +6,7 @@
 </div>
 <div id="header" class="cf" itemscope itemtype="http://schema.org/WPHeader" role="banner">
     <div id="header-logo">
-        <a href="index.html"><img src="images/vendor.png" alt="Sell Cvv (Cc) , Dumps track 1 track 2 with pin" /></a>
+        <a href="/"><img src="../images/vendor.png" alt="Sell Cvv (Cc) , Dumps track 1 track 2 with pin" /></a>
     </div>
 </div>
 <nav id="nav-main" class="cf stack" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation" aria-label="Main Menu">
@@ -14,9 +14,5 @@
     @foreach (listMenu() as $key=>$menu)
         <li id="menu-item-{{$key}}" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-{{$key}}"><a href="/{{$menu->slug}}">{{$menu->name}}</a></li>
     @endforeach
-        <!-- <li id="menu-item-41" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-41"><a href="f-a-q/index.html">F.A.Q</a></li>
-        <li id="menu-item-39" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-39"><a href="credit-card/index.html">Sell Cvv, Cvv2, Credit Card</a></li>
-        <li id="menu-item-40" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-40"><a href="dumps-track1-track2/index.html">Sell Dumps Track1 Track2</a></li>
-        <li id="menu-item-42" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-42"><a href="payment/index.html">Payment Method</a></li> -->
     </ul>
 </nav>

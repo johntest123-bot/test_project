@@ -1,20 +1,25 @@
-@extends('layouts.app')
+@extends('layouts.app') 
 @section('title')
 <title>
-  You searched for {{$query}} | Sell Cvv (Cc) , Dumps track 1 track 2 with pin
+  Best Cvv Shop | {{ $post->title }} | Suppliers Online
 </title>
 @endsection
 @section('content')
 <div class="archive-info">
-	<h3 class="archive-title">Search Results for – "<span>{{$query}}</span>"</h3>		
+	<h3 class="archive-title">Tag: <span>{{$tag->name}}</span></h3>	
 </div>
-@foreach($posts as $key=>$post)
-<div class="post post-list">
+<div class="post">
     <header class="entry-header cf">
         <h1 class="entry-title" itemprop="headline"><a href="/">{{$post->title}}</a></h1>
     </header>
     <div class="entry-byline cf">
-    </div>
+      <div class="entry-author author vcard" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <i class="genericon genericon-user"></i><a class="url fn" href="/" itemprop="name">admin</a>
+      </div>
+      <div class="entry-comment-info">
+        <i class="genericon genericon-comment"></i><a href="/{{$post->slug}}/#comment-area">{{count($post->comments)}} Comments</a>
+      </div>
+	</div>
     <div class="entry-content cf" itemprop="text">
         {!!html_entity_decode($post->content)!!}
     </div>
@@ -30,5 +35,4 @@
       <a href="/sell-dumps-track1-track2">Valid Dumps Track1 Track2</a></strong>
     </p>
 </div>
-@endforeach
 @endsection

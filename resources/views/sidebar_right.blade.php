@@ -24,7 +24,7 @@
             <h2 class="widget-title">Recent Comments</h2>
             <ul id="recentcomments">
             @foreach(commentLastest() as $key=>$comment)
-                <li class="recentcomments"><span class="comment-author-link"><a href="/{{ $comment->post->slug }}" rel='external nofollow ugc' class='url'>{{ $comment->user->name }}</a></span> on <a href="index.html#comment-356">{{ $comment->post->name }}</a></li>
+                <li class="recentcomments"><span class="comment-author-link"><a href="/{{ $comment->post->slug }}" rel='external nofollow ugc' class='url'>{{ $comment->user->name }}</a></span> on <a href="/{{ $comment->post->slug }}">{{ $comment->post->title }}</a></li>
             @endforeach 
                 <!-- <li class="recentcomments"><span class="comment-author-link">lin wei</span> on <a href="index.html#comment-355">Sell Cvv Good Fresh &#038; Cc Fullz Info</a></li>
                 <li class="recentcomments"><span class="comment-author-link">sipeen</span> on <a href="index.html#comment-351">Sell Cvv Good Fresh &#038; Cc Fullz Info</a></li>

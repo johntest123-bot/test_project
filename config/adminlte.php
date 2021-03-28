@@ -259,7 +259,12 @@ return [
             'text'    => 'Khách hàng',
             'url'  => 'admin/users',
             'icon'    => 'fas fa-users',
-        ]
+        ],
+        [
+            'text'    => 'Tag',
+            'url'  => '/admin/tags',
+            'icon'    => 'fas fa-th-list',
+        ],
     ],
 
     /*
