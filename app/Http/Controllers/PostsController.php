@@ -50,7 +50,6 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        dd();
         $request->validate([
             'content'             =>  'required',
             'author'             =>  'required',
@@ -76,6 +75,7 @@ class PostsController extends Controller
 
         Comment::create($comment);
 
-        return redirect()->back();
+        redirect()->route('home');
+        // return redirect()->back();
     }
 }

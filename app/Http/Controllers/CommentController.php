@@ -6,25 +6,42 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\model\Comment;
 use App\model\Reply;
+use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class CommentController extends Controller
 {
     public function store(Request $request)
     {   
+        // dd($request);
+
         $request->validate([
-            'content' => 'required',
-            'commentable_id' => 'required',
-            'commentable_type' => 'required',
-            'captcha' => 'required|captcha'
+            'content'             =>  'required',
+            'author'             =>  'required',
+            'email'              => 'required'
         ]);
+        // dd($request);
+        // $user = User::where('email', $request->email)->firstOrFail();
+        // if(!$user) {
+           
+        // }
 
-        $comment = new Comment;
-        $comment->content = $request->content;
-        $comment->commentable_id = $request->commentable_id;
-        $comment->commentable_type = $request->commentable_type;
-        $comment->user_id = Auth::user()->id;
-        $comment->save();
+        $user = User::create([
+            'name' => $request->author,
+            'email' => $request->email,
+            'password' => Hash::make('1357abcd'),
+            'website' => $request->website,
+        ]);
+       
+        $comment = array(
+            'content'               =>   $request->content,
+            'post_id'             =>   $request->post_id,
+            'user_id'               => $user->id
+        );
 
+        Comment::create($comment);
+
+        // redirect()->route('home');
         return redirect()->back();
     }
 

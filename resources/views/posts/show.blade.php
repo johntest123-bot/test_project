@@ -64,7 +64,7 @@
         </ol>
         <div id="respond" class="comment-respond">
             <h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/#respond" style="display:none;">Cancel reply</a></small></h3>
-            <form action="{{ action('PostsController@store') }}" method="POST" id="commentform" class="comment-form" novalidate>
+            <form method="POST" action="{{ action('CommentController@store') }}"  id="commentform" class="comment-form" enctype="multipart/form-data" >
                 @csrf
                 <p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p>
                 <p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="content" cols="45" rows="8" maxlength="65525" required="required"></textarea></p>

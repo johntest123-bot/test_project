@@ -4,7 +4,7 @@
             <h2 class="widget-title">Tags</h2>
             <div class="tagcloud">
             @foreach(listTags() as $key=>$tag)
-                <a href="tag/{{$tag->slug}}" class="tag-cloud-link tag-link-27 tag-link-position-1" style="font-size: 8pt;" aria-label="201 dumps atm (1 item)">{{$tag->name}}</a>
+                <a href=" {{route('tag.show', $tag->slug)}}" class="tag-cloud-link tag-link-27 tag-link-position-1" style="font-size: 8pt;" aria-label="201 dumps atm (1 item)">{{$tag->name}}</a>
             @endforeach
             </div>
         </section>
