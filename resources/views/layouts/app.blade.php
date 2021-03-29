@@ -8,7 +8,7 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <link rel="shortcut icon" href="{{ url('logo/logo.ico') }}" />
+  <link rel="shortcut icon" href="{{ url('logo/logo1.png') }}" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>

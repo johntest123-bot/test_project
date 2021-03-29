@@ -57,6 +57,10 @@
     display: none;
 }
 
+.comment-post-respond {
+    display: none;
+}
+
 .post-list {
     border-top: 6px solid #222222;
 }

@@ -8,7 +8,6 @@ use App\model\Comment;
 use App\model\Reply;
 use App\User;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
 
@@ -29,7 +28,7 @@ class CommentController extends Controller
         } else {
            $isExist = User::where('email', $request->email)->first();
            $admin = User::where('is_admin', 1)->first();
-           if ($isExist && $isExist->email == $admin->email)) {
+           if ($isExist && $isExist->email == $admin->email) {
                return redirect()->back()->with("error", "Please enter a valid email");
            }
            $user = User::create([
@@ -54,11 +53,12 @@ class CommentController extends Controller
 
     public function reply(Request $request)
     {
+        // dd($request);
         $request->validate([
             'content' => 'required',
             'comment_id' => 'required'
         ]);
-
+        
         $reply = new Reply;
         $reply->content = $request->content;
         $reply->comment_id = $request->comment_id;
@@ -67,7 +67,7 @@ class CommentController extends Controller
         } else {
            $isExist = User::where('email', $request->email)->first();
            $admin = User::where('is_admin', 1)->first();
-           if ($isExist && $isExist->email == $admin->email)) {
+           if ($isExist && $isExist->email == $admin->email) {
                return redirect()->back()->with("error", "Please enter a email valid");
            }
            $user = User::create([
