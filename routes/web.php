@@ -20,7 +20,7 @@ Route::get('/change-password', 'UserController@showChangePasswordForm');
 Route::post('/change-password', 'UserController@changePassword');
 
 Route::resource('comments', 'CommentController')->only(['store']);
-// Route::post('comments/reply', 'CommentController@reply')->name('comments.reply');
+Route::post('comments/reply', 'CommentController@reply')->name('comments.reply');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/', 'UsersController@index');

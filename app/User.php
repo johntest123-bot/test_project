@@ -19,7 +19,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password',
         'phone_number', 'address', 'website',
-        'icq', 'telegram'
+        'icq', 'telegram', 'is_admin'
     ];
 
     /**

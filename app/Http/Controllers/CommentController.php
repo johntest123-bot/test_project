@@ -8,6 +8,9 @@ use App\model\Comment;
 use App\model\Reply;
 use App\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\URL;
 
 class CommentController extends Controller
 {
@@ -20,18 +23,22 @@ class CommentController extends Controller
             'author'             =>  'required',
             'email'              => 'required'
         ]);
-        // dd($request);
-        // $user = User::where('email', $request->email)->firstOrFail();
-        // if(!$user) {
-           
-        // }
 
-        $user = User::create([
+        if (Auth::check()) {
+            $user = Auth::user();
+        } else {
+           $isExist = User::where('email', $request->email)->first();
+           $admin = User::where('is_admin', 1)->first();
+           if ($isExist && $isExist->email == $admin->email)) {
+               return redirect()->back()->with("error", "Please enter a valid email");
+           }
+           $user = User::create([
             'name' => $request->author,
             'email' => $request->email,
             'password' => Hash::make('1357abcd'),
             'website' => $request->website,
-        ]);
+          ]);
+        }
        
         $comment = array(
             'content'               =>   $request->content,
@@ -42,7 +49,7 @@ class CommentController extends Controller
         Comment::create($comment);
 
         // redirect()->route('home');
-        return redirect()->back();
+        return Redirect::to(URL::previous() . "#comment-area");
     }
 
     public function reply(Request $request)
@@ -55,9 +62,24 @@ class CommentController extends Controller
         $reply = new Reply;
         $reply->content = $request->content;
         $reply->comment_id = $request->comment_id;
-        $reply->user_id = Auth::user()->id;
+        if (Auth::check()) {
+          $reply->user_id = Auth::user()->id;
+        } else {
+           $isExist = User::where('email', $request->email)->first();
+           $admin = User::where('is_admin', 1)->first();
+           if ($isExist && $isExist->email == $admin->email)) {
+               return redirect()->back()->with("error", "Please enter a email valid");
+           }
+           $user = User::create([
+            'name' => $request->author,
+            'email' => $request->email,
+            'password' => Hash::make('1357abcd'),
+            'website' => $request->website,
+          ]);
+          $reply->user_id = $user->id;
+        }
         $reply->save();
 
-        return redirect()->back();
+        return Redirect::to(URL::previous() . "#comment-area");
     }
 }
