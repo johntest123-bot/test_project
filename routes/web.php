@@ -23,7 +23,7 @@ Route::resource('comments', 'CommentController')->only(['store']);
 Route::post('comments/reply', 'CommentController@reply')->name('comments.reply');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'admin', 'middleware' => 'admin'], function () {
-    Route::get('/', 'UsersController@index');
+   
     Route::resource('types', 'TypesController');
     Route::resource('articles', 'ArticlesController');
     Route::resource('tags', 'TagsController');
@@ -33,4 +33,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'admin', 'mi
     Route::post('/change-password', 'UsersController@changePassword')->name('current.change_password');
     Route::delete('/user/{id}', 'UsersController@destroy')->name('user.delete');
     Route::post('/user/{id}', 'UsersController@edit_role')->name('user.demote');
+    Route::get('/home', 'UsersController@admins');
 });

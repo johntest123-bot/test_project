@@ -31,12 +31,16 @@ class CommentController extends Controller
            if ($isExist && $isExist->email == $admin->email) {
                return redirect()->back()->with("error", "Please enter a valid email");
            }
-           $user = User::create([
-            'name' => $request->author,
-            'email' => $request->email,
-            'password' => Hash::make('1357abcd'),
-            'website' => $request->website,
-          ]);
+           if ($isExist) {
+            $user = $isExist;
+           } else {
+            $user = User::create([
+                'name' => $request->author,
+                'email' => $request->email,
+                'password' => Hash::make('1357abcd'),
+                'website' => $request->website,
+              ]);
+           }
         }
        
         $comment = array(
@@ -70,12 +74,16 @@ class CommentController extends Controller
            if ($isExist && $isExist->email == $admin->email) {
                return redirect()->back()->with("error", "Please enter a email valid");
            }
-           $user = User::create([
-            'name' => $request->author,
-            'email' => $request->email,
-            'password' => Hash::make('1357abcd'),
-            'website' => $request->website,
-          ]);
+           if ($isExist) {
+            $user = $isExist;
+           } else {
+            $user = User::create([
+                'name' => $request->author,
+                'email' => $request->email,
+                'password' => Hash::make('1357abcd'),
+                'website' => $request->website,
+              ]);
+           }
           $reply->user_id = $user->id;
         }
         $reply->save();

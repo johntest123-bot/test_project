@@ -23,6 +23,35 @@
     width: 35%;
 }
 
+.alert {
+    border-radius: 5px
+}
+
+.alert.alert-success {
+    padding: 7px;
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    background: green;
+    color: #fff;
+    z-index: 999
+}
+
+.alert.alert-danger {
+    border: 1px solid #DDD;
+    background: #ddd;
+    color: red;
+    display: block;
+    margin: 10px 0;
+    width: 100%;
+    float: left
+}
+
+.alert.alert-danger .alert-content {
+    padding: 10px;
+    text-align: center
+}
+
 .page-template-page-cs-php #content,
 .page-template-page-sc-php #content {
     width: 65%;
