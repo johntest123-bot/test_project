@@ -16,3 +16,8 @@
     @endforeach
     </ul>
 </nav>
+@if (Auth::check())
+    @if (Auth::user()->is_admin == true)
+      <a href="/admin/list" class="admin_btn">Trang quản trị</a>
+    @endif
+@endif

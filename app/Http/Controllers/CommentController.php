@@ -19,8 +19,7 @@ class CommentController extends Controller
 
         $request->validate([
             'content'             =>  'required',
-            'author'             =>  'required',
-            'email'              => 'required'
+            'author'             =>  'required'
         ]);
 
         if (Auth::check()) {
