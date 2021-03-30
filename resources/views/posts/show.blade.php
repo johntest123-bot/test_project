@@ -72,6 +72,12 @@
                             <p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" required="required"></p>
                             <p class="comment-form-url"><label for="url">Website</label> <input id="url" name="website" type="url" value="" size="30" maxlength="200"></p>
                             <p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+                            @else
+                            <p class="comment-form-author" style="clear: both;">
+                            <label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="{{Auth::user()->name}}" size="30" maxlength="245" required="required"></p>
+                            <p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="{{Auth::user()->email}}" size="30" maxlength="100" aria-describedby="email-notes" required="required"></p>
+                            <p class="comment-form-url"><label for="url">Website</label> <input id="url" name="website" type="url" value="" size="30" maxlength="200"></p>
+                            <p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
                             @endif
                             <p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_id" value="{{$comment->id}}" id="comment_post_ID">
                                 <input type="hidden" name="comment_parent" id="comment_parent" value="355">
@@ -124,6 +130,11 @@
                 @if (!Auth::check())
                 <p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
                 <p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" required='required' /></p>
+                <p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
+                <p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+                @else
+                <p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="{{Auth::user()->name}}" size="30" maxlength="245" required='required' /></p>
+                <p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="{{Auth::user()->email}}" size="30" maxlength="100" aria-describedby="email-notes" required='required' /></p>
                 <p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
                 <p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
                 @endif

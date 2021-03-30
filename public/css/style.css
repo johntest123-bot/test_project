@@ -27,6 +27,11 @@
     border-radius: 5px
 }
 
+.admin_btn {
+    padding: 10px;
+    color: yellowgreen;
+}
+
 .alert.alert-success {
     padding: 7px;
     position: absolute;

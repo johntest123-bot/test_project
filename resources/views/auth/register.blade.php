@@ -15,9 +15,6 @@
     Đăng ký tài khoản
   </div>
   <div class="content-gf">
-    <div style="border-bottom:1px solid #ddd; padding:2px 0 4px 4px; font-size:15px; color:#666; margin-bottom:9px;">
-      Đăng ký tài khoản để mua hàng dễ dàng, tiết kiệm thời gian, lưu sản phẩm yêu thích, Đăng bài viết và chia sẻ ý kiến.
-    </div>
     <form class="new_user" id="new_user" method="POST" action="{{ route('register') }}">
       @csrf
       <div id="notice" style="padding-left:155px"></div>
@@ -74,7 +71,7 @@
           </td>
         </tr>
 
-        <tr>
+        <!-- <tr>
           <td>Điện thoại<sup>*</sup></td>
           <td>
             <input id="phone-number" type="tel" class="required @error('phone-number') is-invalid @enderror" name="phone-number" value="{{ old('phone-number') }}" required autocomplete="phone-number"><br>
@@ -85,7 +82,7 @@
             @enderror
             <label class="off red" id="lb_user_phone">Nhập số Điện thoại</label>
           </td>
-        </tr>
+        </tr> -->
         <!-- <tr>
           <td>
             <div style="position:relative;">
@@ -194,13 +191,13 @@
             <label class="off red" id="lb_profile-location3">Hãy chọn phường/xã</label>
           </td>
         </tr> -->
-        <tr>
+        <!-- <tr>
           <td>Số nhà và tên đường<sup>*</sup> </td>
           <td>
             <input id="address" type="text" class="required @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address"><br>
             <label class="off red" id="lb_profile_address">Vui lòng nhập số nhà, tên €ường</label>
           </td>
-        </tr>
+        </tr> -->
       </table>
       <table>
         <tr>
