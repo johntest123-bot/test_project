@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 @section('title', 'Dashboard')
 @section('content_header')
-<h1>Tạo thương hiệu</h1>
+<h1>Sửa menu</h1>
 @stop
 @section('content')
 @if($errors->any())
