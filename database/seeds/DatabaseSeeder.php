@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+use AddedSettingSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,5 +13,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(AddedSettingSeeder::class);
     }
 }
